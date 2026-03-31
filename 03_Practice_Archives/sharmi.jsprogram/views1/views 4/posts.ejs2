@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>posts</title>
+  </head>
+  <body>
+    <h1>Posts from API</h1>
+
+    <% if (posts && posts.lengh>0) { %>
+    <ul>
+      <% posts.forEach(post=>{ %>
+      <li>
+        <h2><%= post.title %></h2>
+        <p><%= post.body %></p>
+      </li>
+      <% }) %>
+    </ul>
+    <% } else { %>
+    <p> No posts available.</p>
+    <% } %>
+  </body>
+</html>

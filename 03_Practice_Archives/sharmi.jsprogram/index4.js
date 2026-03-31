@@ -1,0 +1,40 @@
+import express from 'express';
+
+const app = express();
+const PORT =3001;
+
+// const loggerMiddleware =(req, res, next) =>{
+//     console.log(`[${new DataTransfer().toLocaleDateString()}]${req,method}${req.url}`);
+//     next();
+// }
+
+// app.use(loggerMiddleware);
+
+app.use((req,res,next)=>{
+    console.log(`[${new Date().toLocaleDateString()}] ${req.method}${req.url}`);
+    next();
+});
+
+app.use('/admin', (req,res,next)=>{
+    console.log('Admin Section Accessed');
+    next();
+});
+
+
+app.get('/',(req,res)=>{
+    res.send('Hello Home!');
+});
+
+
+app.get('/about',(req,res)=>{
+    res.send('Hello About Page!');
+});
+
+
+app.get('/admin/deshboard',(req,res)=>{
+    res.send('Hello Admin Page!');           
+});
+
+app.listen(PORT, () =>{
+    console.log (`Server is running on http://localhost:${PORT}`);
+});
